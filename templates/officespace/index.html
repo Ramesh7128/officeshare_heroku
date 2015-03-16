@@ -1,0 +1,29 @@
+{% extends 'officespace/base.html' %}
+{% block body_block %}
+        <div class="container">
+            <img class="img-responsive center-block" src="{{STATIC_URL}}/office1.jpg">
+            <br><br>
+            <div class="row">
+            <form class="form-horizontal" method="post" action="/">
+                {% csrf_token %}
+                <input type="text" name="location" placeholder="location" value="" size="50" />
+                <input class="btn btn-primary" type="submit" value="submit" />
+            </form>
+            <br><br>
+            {% for off in offices %}
+                <div class="col-md-3">
+                    <a href="/info/{{off.id}}"><img src="{{ MEDIA_URL }}/{{off.picture}}" width="150" height="150">
+                    <p><b>location: </b>{{off.location}}</p>
+                    <p><b>Rent: <b>{{off.rent}}</p></a>
+{#                    {% ifequal off.users used %}#}
+{#                    <form method="post" action="/">#}
+{#                        {% csrf_token %}#}
+{#                        <input type="hidden" name="title" value="{{off.id}}">#}
+{#                        <input class="btn btn-danger" type="submit" name="del" value="del">#}
+{#                    </form>#}
+{#                    {% endifequal %}#}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'officespace/base.html' %}
+{% load static %}
+{% block body_block %}
+    <img src="{{ MEDIA_URL }}/{{offices.picture}}" width="350" height="350">
+    <div>
+    <p>userid : {{ offices.id }} </p>
+    <p>user: {{ offices.users.username }}</p>
+    <p>Location : {{ offices.location }}</p>
+    <p>Date posted : {{ offices.date }}</p>
+    <p>Rent : {{ offices.rent }}</p>
+    <p>Description : {{ offices.description }}</p>
+    </div>
+    <a href="/message/{{offices.users.id}}">contact/message</a>
+{% endblock %}
